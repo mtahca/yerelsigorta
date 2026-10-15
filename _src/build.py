@@ -294,8 +294,7 @@ def iletisim_body(p):
              f'<div class="icard">{ic("phone")}<h3>Telefon</h3><p><a href="tel:{PHONE_T}">{PHONE}</a><br><a href="tel:{PHONE2_T}">{PHONE2}</a></p></div>'
              f'<div class="icard">{ic("mail")}<h3>E-posta</h3><p><a href="mailto:{MAIL}">{MAIL}</a></p></div>'
              f'<div class="icard">{ic("wa")}<h3>WhatsApp</h3><p><a href="{wa_url("Merhaba, bilgi almak istiyorum.")}" target="_blank" rel="noopener">Mesaj yazın</a></p></div></div>')
-    form = compose('iletisim', 'İletişim', [('ad', 'Adınız Soyadınız', 'text', True), ('tel', 'Telefon', 'tel', True), ('eposta', 'E-posta', 'email', False), ('konu', 'Konu (örn. Kasko, Trafik, DASK)', 'text', False), ('mesaj', 'Mesajınız', 'textarea', True)],
-                   'Bize mesaj bırakın; WhatsApp veya e-posta ile hemen iletin.')
+    form = '<p>Sigorta teklifi veya bilgi için bizi arayın, WhatsApp\'tan yazın ya da e-posta gönderin.</p>' + contact_buttons('Muğla Yerel Sigorta', 'actions--light actions--stack')
     return (hero_band(p, 'Muğla Yerel Sigorta', 'Aracılık Hizmetleri Ltd. Şti.') +
             f'<section class="sec"><div class="sec__in"><h2 class="h-left">İletişim</h2>{cards}'
             f'<div class="split"><div><h2 class="h-left">Bize Ulaşın</h2>{form}</div>'
@@ -348,8 +347,8 @@ def seyahat_extra(p):
 pages.append(simple_page('seyahat', 'Seyahat Sigortası', 'seyahat', [], extra=seyahat_extra))
 
 def diger_extra(p):
-    d = [('İnşaat all risks', 'İnşaat faaliyetlerinin başlangıcından bitimine kadar geçen süre içinde, inşaat faaliyetlerine özgü ani ve beklenmedik sebeplerle ortaya çıkacak hasarları güvence altına almak için düzenlenen bir poliçedir.'),
-         ('Montaj all risks', 'Montaj faaliyetlerinin başlangıcından bitimine kadar geçen süre içinde, montaj faaliyetlerine özgü ani ve beklenmedik sebeplerle ortaya çıkacak hasarlara karşı güvence sunan bir poliçedir.'),
+    d = [('İnşaat', 'İnşaat faaliyetlerinin başlangıcından bitimine kadar geçen süre içinde, inşaat faaliyetlerine özgü ani ve beklenmedik sebeplerle ortaya çıkacak hasarları güvence altına almak için düzenlenen bir poliçedir.'),
+         ('Montaj', 'Montaj faaliyetlerinin başlangıcından bitimine kadar geçen süre içinde, montaj faaliyetlerine özgü ani ve beklenmedik sebeplerle ortaya çıkacak hasarlara karşı güvence sunan bir poliçedir.'),
          ('Elektronik cihaz', 'Elektronik eşyalarınızın beklenmedik nedenlerle uğradığı zararları poliçede belirtilen koşullara bağlı olarak temin eden sigorta poliçesidir.'),
          ('Makine kırılması', 'Makinelerinizi ani ve beklenmedik sebeplerle ortaya çıkmak kaydıyla, poliçede belirtilen koşullara bağlı olarak temin eden sigorta poliçesidir.'),
          ('Nakliyat poliçeleri', 'Nakliyat Emtia Sigortası ile taşınabilecek herhangi bir yükün, onu taşımaya uygun denizyolu, havayolu, karayolu ve demiryolu nakil vasıtalarından biriyle bir yerden başka bir yere taşınması esnasında uğrayabileceği hasar ve kayıpları poliçede belirlenmiş genel ve özel şartlar kapsamında güvence altına alan sigorta türüdür.')]
@@ -377,22 +376,20 @@ def tamam_body(p):
              ('Ayakta Tedavi / Muayene', 'Özel ve genel şartlar çerçevesinde yılda 10 vaka ile sınırlı olup %100 olarak karşılanmaktadır. Doktor muayene, laboratuvar hizmetleri, görüntüleme ve tanı hizmetleri, ileri tanı yöntemleri ve fizik tedavi giderleri teminat altındadır.'),
              ('Ayda 30TL\'den Başlayan Fiyatlarla', 'Özel Hastanelerde, SGK Farkı Ödemeden, Prosedür Olmadan Rahatlıkla Tedavi Olun. Tamamlayıcı Sağlık Sigortası sahipleri, özel hastaneye gittiklerinde ayakta veya yatarak tedavilerinde hiçbir ücret ödemiyor.* Ayrıca SGK’lılara uygulanan ek ücret yok. Yapmanız gereken anlaşmalı hastanelerimize giderek tedavi olmak. Tamamlayıcı Sağlık Sigortası’nı kullanmak için hiçbir prosedür gerekmez.')]
     fh = ''.join(f'<div class="feat"><span class="feat__n">{ic("check")}</span><div><h3>{E(a)}</h3><p>{E(b)}</p></div></div>' for a, b in feats)
-    form = compose('tamamlayici', 'Tamamlayıcı Sağlık Sigortası', [('ad', 'Adınız Soyadınız', 'text', True), ('tel', 'Telefon', 'tel', True), ('dogum', 'Doğum yılı', 'text', False), ('eposta', 'E-posta', 'email', False)],
-                   '')
+    form = contact_buttons('Tamamlayıcı Sağlık Sigortası', 'actions--light actions--stack')
     return (titlebar(p, 'Tamamlayıcı Sağlık Sigortası') +
             f'<section class="sec"><div class="sec__in prose"><div class="banner"><img src="{rel(p,"assets/img/tamamlayici.webp")}" width="1200" height="400" alt="Tamamlayıcı Sağlık Sigortası"></div>'
             f'<h2>Tamamlayıcı Sağlık Sigortası</h2><div class="feats">{fh}</div>'
             '<p class="small">* SGK’nın yasası gereği sigortalılardan özel hastanelerde alınması zorunlu olan doktor muayene fark ücreti yine yasa gereği bu ürüne konu edilememektedir. Bugün için bu tutar 15 TL olup SGK tarafından değiştirilebilir. Bunun dışında bir katılım söz konusu değildir.</p></div></section>'
             f'<section class="sec sec--alt"><div class="sec__in"><div class="split split--offer"><div class="offer__img"><img src="{rel(p,"assets/img/sagligim-tamam.webp")}" width="600" height="600" alt="Sağlığım Tamam" loading="lazy"></div>'
-            f'<div><h2 class="h-left">Fiyat İste</h2><p>Size özel fiyat teklifini almak için formu doldurabilir veya WhatsApp iletişim hattından bize ulaşabilirsiniz.</p>{form}</div></div></div></section>')
+            f'<div><h2 class="h-left">Fiyat İste</h2><p>Size özel fiyat teklifini almak için bizi arayabilir, WhatsApp iletişim hattından veya e-posta ile bize ulaşabilirsiniz.</p>{form}</div></div></div></section>')
 pages.append(Page('tamamlayici-saglik-sigortasi', 'Tamamlayıcı Sağlık Sigortası', tamam_body))
 
 # SIGORTA HATIRLATMA
 def hatirlat_body(p):
-    form = compose('hatirlatma', 'Sigorta Hatırlatma', [('ad', 'Adınız', 'text', True), ('eposta', 'E-posta', 'email', False), ('plaka', 'Plaka', 'text', True), ('tel', 'Telefon', 'tel', True)],
-                   'Poliçe bitiş tarihiniz yaklaşırken sizi arayalım. Bilgilerinizi bırakın, hatırlatma talebiniz bize ulaşsın.')
+    form = contact_buttons('Sigorta hatırlatma (poliçe bitiş tarihi hatırlatması)', 'actions--light actions--stack')
     return (titlebar(p, 'Sigorta Hatırlatma') +
-            f'<section class="sec"><div class="sec__in narrow"><p>Trafik ve kasko poliçenizin bitiş tarihini unutmayın! Bilgilerinizi bırakın, poliçeniz bitmeden önce sizi bilgilendirelim.</p>{form}</div></section>')
+            f'<section class="sec"><div class="sec__in narrow"><p>Trafik ve kasko poliçenizin bitiş tarihini unutmayın! Adınızı, plakanızı ve telefon numaranızı bize bildirin, poliçeniz bitmeden önce sizi bilgilendirelim.</p>{form}</div></section>')
 pages.append(Page('sigorta-hatirlatma', 'Sigorta Hatırlatma', hatirlat_body, nav_cur='__none__'))
 
 # 404

@@ -19,7 +19,8 @@ ul,ol{margin:0;padding:0;list-style:none}
 .hdr{position:relative;z-index:30;background:#fff}
 .hdr__top{display:flex;align-items:center;justify-content:space-between;height:120px;padding:0 50px}
 .hdr__logo img{width:350px;height:90px}
-.hdr__contact{display:flex;gap:26px;font-size:13px}
+.hdr__contact{display:flex;gap:30px;font-size:17px}
+.hdr__contact .ic{font-size:18px}
 .hdr__contact a{color:var(--text);display:flex;align-items:center;gap:7px}
 .hdr__contact a:hover{color:var(--blue)}
 .hdr__nav{border-bottom:1px solid var(--line);padding:0 35px}
@@ -92,6 +93,14 @@ ul,ol{margin:0;padding:0;list-style:none}
 .btn--line{border-color:var(--blue);color:var(--blue);background:#fff;font-size:15px;padding:10px 22px}
 .btn--line:hover{background:var(--blue);color:#fff}
 .cta .btn--mail{color:#fff}
+.cta .btn--mail:hover,.cta .btn--call:hover{background:#fff;color:var(--blue)}
+.actions--light .btn--call{border-color:var(--blue);color:var(--blue);background:#fff}
+.actions--light .btn--call:hover{background:var(--blue);color:#fff}
+.actions--light .btn--wa{background:var(--wa);border-color:var(--wa);color:#fff}
+.actions--light .btn--wa:hover{background:#1fb558;border-color:#1fb558;color:#fff}
+.actions--light .btn--mail{border-color:var(--blue);color:var(--blue);background:#fff}
+.actions--light .btn--mail:hover{background:var(--blue);color:#fff}
+.actions--light.actions--stack{margin-left:0}
 /* buttons on white */
 .compose .btn--wa{background:var(--wa);border-color:var(--wa);color:#fff}
 .compose .btn--wa:hover{background:#1fb558;border-color:#1fb558;color:#fff}
